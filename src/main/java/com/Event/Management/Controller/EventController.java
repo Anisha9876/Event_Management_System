@@ -7,4 +7,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/event")
 public class EventController {
+    public void createEvent(){
+
+    }
+    public void updateEvent(){
+
+    }
+    public void deleteEvent(){
+
+    }
+    public void getEventDetails(){
+
+    }
+
 }

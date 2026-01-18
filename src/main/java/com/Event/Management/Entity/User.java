@@ -7,6 +7,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="EventUser")
+
 public class User{
 
     @Id
@@ -17,5 +18,9 @@ public class User{
     private String role;
     @Email
    private String mail;
+    private String eventName="Hacker36";
     private String phone;
+    @ManyToOne
+    @JoinColumn(name="event_id")
+    private Event event;
 }
