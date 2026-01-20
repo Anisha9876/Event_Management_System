@@ -6,9 +6,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class UserDto {
-    private Long id;
+    private UUID id;
     private String username;
     private String password;
     private String role;

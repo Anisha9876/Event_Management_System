@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Entity
 @Data
 @Table(name="EventUser")
@@ -11,8 +13,8 @@ import lombok.Data;
 public class User{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     private String username;
     private String password;
     private String role;

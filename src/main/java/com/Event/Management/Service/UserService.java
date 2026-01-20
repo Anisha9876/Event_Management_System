@@ -1,7 +1,9 @@
 package com.Event.Management.Service;
 
+import com.Event.Management.DTO.UserDto;
 import com.Event.Management.Entity.Event;
 import com.Event.Management.Entity.User;
+import com.Event.Management.Mapper.UserMapper;
 import com.Event.Management.Repository.EventRepo;
 import com.Event.Management.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +19,12 @@ public class UserService {
 
     @Autowired
     EventRepo eventRepo;
+    @Autowired
+    UserMapper userMapper;
 
-    public User registerUser(User user) {
+    public User registerUser(UserDto userdto) {
+        User user = userMapper.userDtoToUser(userdto);
         User user1 = repo.save(user);
-        System.out.println(user.getMail());
         return user1;
     }
 

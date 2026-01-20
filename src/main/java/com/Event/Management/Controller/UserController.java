@@ -1,5 +1,6 @@
 package com.Event.Management.Controller;
 
+import com.Event.Management.DTO.UserDto;
 import com.Event.Management.Entity.Event;
 import com.Event.Management.Entity.User;
 import com.Event.Management.Service.UserService;
@@ -22,8 +23,8 @@ public class UserController {
     }
 
     @PostMapping("/regi")
-    public ResponseEntity<User> register(@Valid @RequestBody User user){
-        User log = userService.registerUser(user);
+    public ResponseEntity<User> register(@Valid @RequestBody UserDto userdto){
+        User log = userService.registerUser(userdto);
         return ResponseEntity.status(HttpStatus.CREATED).body(log);
     }
 
