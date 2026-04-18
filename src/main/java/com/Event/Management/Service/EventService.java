@@ -11,7 +11,7 @@ public class EventService {
     @Autowired
     EventMapper eventMapper;
     public void createEvent(EventDto eventDto){
-        eventMapper.ev
+
 
     }
 }
