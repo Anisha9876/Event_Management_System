@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Event {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long eventId;
     private String name;
     @Column(nullable = false)

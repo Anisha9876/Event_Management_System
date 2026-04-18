@@ -11,8 +11,8 @@ import java.util.UUID;
 @Table(name="EventUser")
 public class User{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String username;
     private String password;
     private String role;

@@ -1,6 +1,7 @@
 package com.Event.Management.Controller;
 
 import com.Event.Management.DTO.EventDto;
+import com.Event.Management.Entity.Event;
 import com.Event.Management.Service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,8 @@ public class EventController {
     EventService eventService;
 
     @PostMapping("/create")
-    public ResponseEntity<EventDto> createEvent(@RequestBody EventDto eventDto){
-        EventDto event = eventService.createEvent(eventDto);
+    public ResponseEntity<Event> createEvent(@RequestBody EventDto eventDto){
+        Event event = eventService.createEvent(eventDto);
         return ResponseEntity.status(HttpStatus.OK).body(event);
     }
     public void updateEvent(){

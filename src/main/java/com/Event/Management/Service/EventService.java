@@ -15,10 +15,10 @@ public class EventService {
     @Autowired
     EventRepo eventRepo;
 
-    public EventDto createEvent(EventDto eventDto){
+    public Event createEvent(EventDto eventDto){
         Event event = eventMapper.eventDtoToEvent(eventDto);
-        eventRepo.save(event);
-        return eventDto;
+        Event save = eventRepo.save(event);
+        return save;
 
     }
 }
