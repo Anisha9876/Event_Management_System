@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class UserService {
     @Autowired
-    UserRepo repo;
+    UserRepo userRepo;
 
     @Autowired
     EventRepo eventRepo;
@@ -24,18 +24,19 @@ public class UserService {
 
     public User registerUser(UserDto userdto) {
         User user = userMapper.userDtoToUser(userdto);
-        User user1 = repo.save(user);
+        User user1 = userRepo.save(user);
         return user1;
     }
 
     public List<User> getUserDetails() {
-        List<User> all = repo.findAll();
+        List<User> all = userRepo.findAll();
         return all;
     }
 
-    public Optional<Event> getRegisteredEvents(Long userId) {
-        Optional<Event> events = eventRepo.findById(userId);
-        return events;
+    public List<Event> getRegisteredEvents(Long userId) {
+       User user = userRepo.findById(userId)
+                .orElseThrow(()-> new RuntimeException("User Not Found"));
+        return List.of(user.getEvent());
 
     }
 }

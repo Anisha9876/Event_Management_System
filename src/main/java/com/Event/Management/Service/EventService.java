@@ -3,6 +3,7 @@ package com.Event.Management.Service;
 import com.Event.Management.DTO.EventDto;
 import com.Event.Management.Entity.Event;
 import com.Event.Management.Mapper.EventMapper;
+import com.Event.Management.Repository.EventRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +11,14 @@ import org.springframework.stereotype.Service;
 public class EventService {
     @Autowired
     EventMapper eventMapper;
-    public void createEvent(EventDto eventDto){
 
+    @Autowired
+    EventRepo eventRepo;
+
+    public EventDto createEvent(EventDto eventDto){
+        Event event = eventMapper.eventDtoToEvent(eventDto);
+        eventRepo.save(event);
+        return eventDto;
 
     }
 }

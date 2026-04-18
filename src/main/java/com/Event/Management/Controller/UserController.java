@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -29,8 +29,8 @@ public class UserController {
     }
 
     @GetMapping("/allEvents/{userId}")
-    public Optional<Event> seeAllRegisterEvent(@PathVariable Long userId){
-        Optional<Event> registeredEvents = userService.getRegisteredEvents(userId);
+    public List<Event> seeAllRegisterEvent(@PathVariable Long userId){
+        List<Event> registeredEvents = userService.getRegisteredEvents(userId);
         return registeredEvents;
     }
     public void cancelEvent(){
