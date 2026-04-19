@@ -31,4 +31,12 @@ public class EventService {
         List<Event> allEvents = eventRepo.findAll();
         return allEvents;
     }
+    public Event updateEvent(Event event,Long eventId){
+        Event existEvent = eventRepo.findById(eventId).orElseThrow(() -> new RuntimeException("Event nout found with id: " + eventId));
+        Event update = eventRepo.save(event);
+        existEvent.setEventDate(update.getEventDate());
+        existEvent.setName(update.getName());
+        return existEvent;
+
+    }
 }

@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/event")
 public class EventController {
@@ -26,9 +24,11 @@ public class EventController {
         Event event = eventService.getDetailsOfEvent(eventId);
         return ResponseEntity.ok(event);
     }
-    @PutMapping("/update")
-    public void updateEvent(){
 
+    @PutMapping("/update/{eventId}")
+    public ResponseEntity<Event> updateEvent(@RequestBody Event event,@PathVariable Long eventId){
+        Event event1 = eventService.updateEvent(event,eventId);
+        return ResponseEntity.ok(event1);
     }
     @DeleteMapping("/delete")
     public void deleteEvent(){

@@ -36,7 +36,6 @@ public class AdminController {
         List<User> userDetails = service.getUserDetails();
         return userDetails;
     }
-
     public void systemLevelAction(){
 
     }
