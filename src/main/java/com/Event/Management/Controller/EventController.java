@@ -6,10 +6,9 @@ import com.Event.Management.Service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/event")
@@ -22,14 +21,19 @@ public class EventController {
         Event event = eventService.createEvent(eventDto);
         return ResponseEntity.status(HttpStatus.OK).body(event);
     }
+    @GetMapping("/getDetails")
+    public ResponseEntity<Event> getEventDetails(@RequestParam Long eventId){
+        Event event = eventService.getDetailsOfEvent(eventId);
+        return ResponseEntity.ok(event);
+    }
+    @PutMapping("/update")
     public void updateEvent(){
 
     }
+    @DeleteMapping("/delete")
     public void deleteEvent(){
 
     }
-    public void getEventDetails(){
 
-    }
 
 }

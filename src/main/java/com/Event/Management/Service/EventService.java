@@ -7,6 +7,8 @@ import com.Event.Management.Repository.EventRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class EventService {
     @Autowired
@@ -20,5 +22,9 @@ public class EventService {
         Event save = eventRepo.save(event);
         return save;
 
+    }
+    public Event getDetailsOfEvent(Long eventId){
+        return  eventRepo.findById(eventId)
+                .orElseThrow(() -> new RuntimeException("Event not found with id: " + eventId));
     }
 }
