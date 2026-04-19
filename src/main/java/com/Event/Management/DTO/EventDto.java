@@ -10,7 +10,6 @@ import java.util.List;
 
 @Data
 public class EventDto {
-
     private Long eventId;
     private String name;
     private LocalDate eventDate;

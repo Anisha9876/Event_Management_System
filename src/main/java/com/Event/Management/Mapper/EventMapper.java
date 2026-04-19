@@ -46,6 +46,7 @@
             Event event=new Event();
             event.setName(eventDto.getName());
             event.setEventDate(eventDto.getEventDate());
+            event.setEventId(eventDto.getEventId());
            if(eventDto.getUsers() != null) {
                List<User> users = eventDto.getUsers().stream().map(u ->
                        {

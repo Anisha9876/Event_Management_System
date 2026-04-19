@@ -11,7 +11,8 @@ import java.util.Optional;
 
 @Component
 public class UserMapper {
-
+    @Autowired
+    EventRepo eventRepo;
 
     public UserDto userToUserDto(User user){
         UserDto userDto = new UserDto();
@@ -24,15 +25,21 @@ public class UserMapper {
         return userDto;
     }
     public User userDtoToUser(UserDto userDto){
+
         User user=new User();
         user.setMail(userDto.getMail());
         user.setPhone(userDto.getPhone());
         user.setUsername(userDto.getUsername());
         user.setRole(userDto.getRole());
         user.setPassword(userDto.getPassword());
-
-            // handle if event not found, maybe throw exception
-
+        if(userDto.getEventId() != null){
+            Optional<Event> event = eventRepo.findById(userDto.getEventId());
+            if(event.isPresent()){
+                user.setEvent(event.get()); // IMPORTANT
+            } else {
+                throw new RuntimeException("Event not found");
+            }
+        }
 
         return user;
     }
