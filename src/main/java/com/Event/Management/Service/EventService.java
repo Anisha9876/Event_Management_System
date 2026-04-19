@@ -7,7 +7,7 @@ import com.Event.Management.Repository.EventRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class EventService {
@@ -26,5 +26,9 @@ public class EventService {
     public Event getDetailsOfEvent(Long eventId){
         return  eventRepo.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("Event not found with id: " + eventId));
+    }
+    public List<Event> getEvents(){
+        List<Event> allEvents = eventRepo.findAll();
+        return allEvents;
     }
 }

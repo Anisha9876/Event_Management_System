@@ -14,7 +14,7 @@
     public class EventMapper {
         @Autowired
         UserRepo userRepo;
-        public EventDto eventToEventDto(Event event) {
+        public static EventDto eventToEventDto(Event event) {
             EventDto eventDto = new EventDto();
             eventDto.setName(event.getName());
             eventDto.setEventDate(event.getEventDate());
@@ -31,6 +31,7 @@
                             userDto.setUsername(u.getUsername());
                             userDto.setPhone(u.getPhone());
                             userDto.setPassword(u.getPassword());
+                            userDto.setEventId(u.getEvent().getEventId());
                             return userDto;
                         }
 
