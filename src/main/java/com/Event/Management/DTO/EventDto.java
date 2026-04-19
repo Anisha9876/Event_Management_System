@@ -17,6 +17,5 @@ public class EventDto {
     private Long eventId;
     private String name;
     private LocalDate eventDate;
-    @JsonIgnore
     private List<UserDto> users;
 }
