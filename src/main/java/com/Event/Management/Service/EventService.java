@@ -39,4 +39,12 @@ public class EventService {
         return existEvent;
 
     }
+    public Event deleteEvent(Long eventId){
+
+        Event event = eventRepo.findById(eventId).orElseThrow(() -> new RuntimeException("Event not found with id: " + eventId));
+        eventRepo.deleteById(eventId);
+
+        return event;
+
+    }
 }

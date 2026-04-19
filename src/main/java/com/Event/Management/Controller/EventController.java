@@ -30,9 +30,10 @@ public class EventController {
         Event event1 = eventService.updateEvent(event,eventId);
         return ResponseEntity.ok(event1);
     }
-    @DeleteMapping("/delete")
-    public void deleteEvent(){
-
+    @DeleteMapping("/delete/{eventId}")
+    public ResponseEntity<String> deleteEvent(@PathVariable Long eventId){
+        Event event = eventService.deleteEvent(eventId);
+        return ResponseEntity.ok("Event deleted successfully"+event.getName());
     }
 
 
